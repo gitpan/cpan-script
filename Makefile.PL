@@ -1,12 +1,18 @@
-# $Id: Makefile.PL,v 1.8 2006/11/01 21:57:03 comdog Exp $
+# $Id: Makefile.PL 2521 2008-04-06 13:53:04Z comdog $
 use ExtUtils::MakeMaker;
+
+require 5.006;
 
 eval "use Test::Manifest 1.14";
 
 WriteMakefile(
     'NAME'		    => 'cpan-script',
-	'VERSION'       => '1.53',
-	
+	'VERSION'       => '1.54',
+	'ABSTRACT'      => 'Interact with CPAN from the command line',
+
+	'LICENSE'       => 'perl',
+	'AUTHOR'        => 'brian d foy <bdfoy@cpan.org>',
+
 	'EXE_FILES' =>  [ 'cpan' ],
 	    	
 	'PREREQ_PM' => {

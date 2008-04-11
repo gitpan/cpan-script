@@ -1,5 +1,6 @@
 #!/usr/bin/perl
-# $Id: cpan,v 1.9 2006/11/01 21:49:31 comdog Exp $
+
+# $Id: cpan 2523 2008-04-11 15:44:10Z comdog $
 use strict;
 
 =head1 NAME
@@ -14,6 +15,10 @@ cpan - easily interact with CPAN from the command line
 	# with switches, installs modules with extra behavior
 	cpan [-cfimt] module_name [ module_name ... ]
 
+	# with just the dot, install from the distribution in the
+	# current directory
+	cpan .
+	
 	# without arguments, starts CPAN.pm shell
 	cpan
 
@@ -172,24 +177,11 @@ You may redistribute this under the same terms as Perl itself.
 use CPAN ();
 use Getopt::Std;
 
-my $VERSION =
-	sprintf "%d.%d", q$Revision: 1.9 $ =~ m/ (\d+) \. (\d+) /xg;
+my $VERSION = sprintf "%d.%d", qw( 1 55 );
 
-if( $ARGV[0] eq 'install' )
+if( $ARGV[0] eq 'install' and @ARGV > 1 )
 	{
-	my @args = @ARGV;
-	shift @args;
-	
-	die <<"HERE";
-It looks like you specified 'install' as an argument to cpan(1). This
-script is not the CPAN.pm prompt and doesn't understand the same commands.
-In fact, doesn't require the extra typing. You probably just want to
-list the modules you want to install:
-
-	cpan @args
-	
-See the documentation for more details on using this script.
-HERE
+	shift @ARGV;
 	}
 	
 if( 0 == @ARGV ) { CPAN::shell(); exit 0 }

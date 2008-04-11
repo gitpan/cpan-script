@@ -1,4 +1,4 @@
-# $Id: compile.t,v 1.3 2005/12/24 00:59:08 comdog Exp $
+# $Id: compile.t 1692 2005-12-24 00:59:08Z comdog $
 
 use Test::More tests => 1;
 
